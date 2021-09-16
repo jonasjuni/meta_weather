@@ -27,10 +27,24 @@ void main() {
         when(httpClient.get(any))
             .thenAnswer((_) async => http.Response('[]', 200));
 
-        await metaWeatherApiClient.getLocatioId(city);
+        await metaWeatherApiClient.getLocatioByQuery(city);
         verify(httpClient.get(
                 Uri.https(_baseUrl, '/api/location/search', {'query': city})))
             .called(1);
+      });
+
+      test('Check get location lattLong request', () async {
+        const latitude = -23.4493288;
+        const longitude = -46.7161167;
+
+        when(httpClient.get(any)).thenAnswer((_) async {
+          return http.Response('[]', 200);
+        });
+
+        await metaWeatherApiClient.getLocatioByLattLong(
+            lattitude: latitude, longitude: longitude);
+        verify(httpClient.get(Uri.https(_baseUrl, '/api/location/search',
+            {'lattlong': '$latitude,$longitude'}))).called(1);
       });
       test('Location Object parse test', () async {
         when(httpClient.get(any)).thenAnswer((_) async => http.Response(
@@ -43,7 +57,7 @@ void main() {
             headers: {'content-type': 'application/json; charset=utf-8'}));
 
         expect(
-            await metaWeatherApiClient.getLocatioId('são'),
+            await metaWeatherApiClient.getLocatioByQuery('são'),
             isA<List<Location>>()
                 .having((location) => location[0].title, 'title', 'São Paulo')
                 .having((location) => location[0].locationType, 'locationType',

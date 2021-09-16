@@ -13,9 +13,17 @@ class WeatherApiClient {
   WeatherApiClient({http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
-  Future<List<Location>> getLocatioId(String city) async {
+  Future<List<Location>> getLocatioByQuery(String city) async {
     final url = Uri.https(
         _baseUrl, '/api/location/search', <String, dynamic>{'query': city});
+    final List data = await _getParsedResonse(url);
+    return data.map((e) => Location.fromJson(e)).toList();
+  }
+
+  Future<List<Location>> getLocatioByLattLong(
+      {required double lattitude, required double longitude}) async {
+    final url = Uri.https(_baseUrl, '/api/location/search',
+        <String, dynamic>{'lattlong': '$lattitude,$longitude'});
     final List data = await _getParsedResonse(url);
     return data.map((e) => Location.fromJson(e)).toList();
   }
