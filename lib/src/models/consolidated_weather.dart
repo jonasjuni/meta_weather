@@ -60,8 +60,7 @@ class ConsolidatedWeather {
   final double maxTemp;
 
   /// Current temperature in `centigrade`
-  @JsonKey(name: 'the_temp')
-  final double temp;
+  final double theTemp;
 
   /// Wind speed in `mph`
   final double windSpeed;
@@ -87,7 +86,7 @@ class ConsolidatedWeather {
       this.applicableDate,
       this.minTemp,
       this.maxTemp,
-      this.temp,
+      this.theTemp,
       this.windSpeed,
       this.airPressure,
       this.humidity,

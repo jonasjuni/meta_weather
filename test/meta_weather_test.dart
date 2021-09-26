@@ -249,10 +249,12 @@ void main() {
         expect(
             await metaWeatherApiClient.fetchWeather(woeid),
             isA<Weather>()
-                .having((weather) => weather.consolidatedWeather[0].condition,
-                    'Object condition', WeatherCondition.heavyRain)
+                .having(
+                    (weather) => weather.consolidatedWeather[0].weatherState,
+                    'Object condition',
+                    WeatherState.heavyRain)
                 .having((weather) => weather.title, 'City name', 'São Paulo')
-                .having((weather) => weather.consolidatedWeather[0].temp,
+                .having((weather) => weather.consolidatedWeather[0].theTemp,
                     'Current temp', 23.295)
                 .having((weather) => weather.woeid, 'Woeid', woeid));
       });

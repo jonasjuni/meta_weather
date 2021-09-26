@@ -54,7 +54,7 @@ Map<String, dynamic> _$ConsolidatedWeatherToJson(
       'applicable_date': instance.applicableDate.toIso8601String(),
       'min_temp': instance.minTemp,
       'max_temp': instance.maxTemp,
-      'the_temp': instance.temp,
+      'the_temp': instance.theTemp,
       'wind_speed': instance.windSpeed,
       'air_pressure': instance.airPressure,
       'humidity': instance.humidity,
