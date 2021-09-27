@@ -6,42 +6,45 @@ part of 'consolidated_weather.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ConsolidatedWeather _$ConsolidatedWeatherFromJson(Map<String, dynamic> json) {
-  return $checkedNew('ConsolidatedWeather', json, () {
-    final val = ConsolidatedWeather(
-      $checkedConvert(json, 'id', (v) => v as int),
-      $checkedConvert(json, 'weather_state_name', (v) => v as String),
-      $checkedConvert(
-          json,
-          'weather_state_abbr',
-          (v) => _$enumDecode(_$WeatherStateEnumMap, v,
-              unknownValue: WeatherState.unknownEntry)),
-      $checkedConvert(json, 'wind_direction_compass', (v) => v as String),
-      $checkedConvert(json, 'created', (v) => DateTime.parse(v as String)),
-      $checkedConvert(
-          json, 'applicable_date', (v) => DateTime.parse(v as String)),
-      $checkedConvert(json, 'min_temp', (v) => (v as num).toDouble()),
-      $checkedConvert(json, 'max_temp', (v) => (v as num).toDouble()),
-      $checkedConvert(json, 'the_temp', (v) => (v as num).toDouble()),
-      $checkedConvert(json, 'wind_speed', (v) => (v as num).toDouble()),
-      $checkedConvert(json, 'air_pressure', (v) => (v as num).toDouble()),
-      $checkedConvert(json, 'humidity', (v) => (v as num).toDouble()),
-      $checkedConvert(json, 'visibility', (v) => (v as num).toDouble()),
-      $checkedConvert(json, 'predictability', (v) => v as int),
+ConsolidatedWeather _$ConsolidatedWeatherFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'ConsolidatedWeather',
+      json,
+      ($checkedConvert) {
+        final val = ConsolidatedWeather(
+          $checkedConvert('id', (v) => v as int),
+          $checkedConvert('weather_state_name', (v) => v as String),
+          $checkedConvert(
+              'weather_state_abbr',
+              (v) => _$enumDecode(_$WeatherStateEnumMap, v,
+                  unknownValue: WeatherState.unknownEntry)),
+          $checkedConvert('wind_direction_compass', (v) => v as String),
+          $checkedConvert('created', (v) => DateTime.parse(v as String)),
+          $checkedConvert(
+              'applicable_date', (v) => DateTime.parse(v as String)),
+          $checkedConvert('min_temp', (v) => (v as num).toDouble()),
+          $checkedConvert('max_temp', (v) => (v as num).toDouble()),
+          $checkedConvert('the_temp', (v) => (v as num).toDouble()),
+          $checkedConvert('wind_speed', (v) => (v as num).toDouble()),
+          $checkedConvert('air_pressure', (v) => (v as num).toDouble()),
+          $checkedConvert('humidity', (v) => (v as num).toDouble()),
+          $checkedConvert('visibility', (v) => (v as num).toDouble()),
+          $checkedConvert('predictability', (v) => v as int),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'weatherStateName': 'weather_state_name',
+        'weatherState': 'weather_state_abbr',
+        'windDirectionCompass': 'wind_direction_compass',
+        'applicableDate': 'applicable_date',
+        'minTemp': 'min_temp',
+        'maxTemp': 'max_temp',
+        'theTemp': 'the_temp',
+        'windSpeed': 'wind_speed',
+        'airPressure': 'air_pressure'
+      },
     );
-    return val;
-  }, fieldKeyMap: const {
-    'weatherStateName': 'weather_state_name',
-    'weatherState': 'weather_state_abbr',
-    'windDirectionCompass': 'wind_direction_compass',
-    'applicableDate': 'applicable_date',
-    'minTemp': 'min_temp',
-    'maxTemp': 'max_temp',
-    'temp': 'the_temp',
-    'windSpeed': 'wind_speed',
-    'airPressure': 'air_pressure'
-  });
-}
 
 Map<String, dynamic> _$ConsolidatedWeatherToJson(
         ConsolidatedWeather instance) =>

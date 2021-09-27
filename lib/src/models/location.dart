@@ -16,13 +16,26 @@ enum LocationType {
 
 @JsonSerializable()
 class Location {
+  /// distance in `Meters` - Only returned on a lattlong search
+  final int? distance;
+
+  /// Name of the location
   final String title;
   final LocationType locationType;
+
+  /// Where On Earth ID
   final int woeid;
+
   @JsonKey(name: 'latt_long')
   final Coordinates lattLong;
 
-  const Location(this.title, this.locationType, this.woeid, this.lattLong);
+  const Location(
+    this.distance,
+    this.title,
+    this.locationType,
+    this.woeid,
+    this.lattLong,
+  );
 
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
