@@ -1,6 +1,6 @@
-#META WEATHER API HAS BEEN DISCONTINUED 
+# META WEATHER API HAS BEEN DISCONTINUED 
 
-# meta_weather
+## meta_weather
 
 A simple test of a Flutter package project. Using meta weather api https://www.metaweather.com/
 
